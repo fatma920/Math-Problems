@@ -3,7 +3,7 @@
 
 # In[2]:
 
-
+#Day 2
 #write a program where user should enter an array of numbers 
 # and a number, sum of two of numbers should be equal to number A
 arr = []
@@ -19,7 +19,7 @@ for i in rang(arr):
 
 # In[3]:
 
-
+#Day3
 #find out if the user is a girl or boy from their user
 username = str(input("enter the username: "))
 count = username.count(username)
@@ -31,8 +31,8 @@ else:
 
 # In[1]:
 
-
-#finding the volume of a cone \
+#Day4
+#finding the volume of a cone 
 import math 
 def cone_vol(radius, height):
     return (1/3)* math.pi*(radius ** 2) * height 
@@ -46,7 +46,7 @@ print(f"The volume of the cone is: {volume:.2f} cubic units")
 
 # In[ ]:
 
-
+#Day5 
 #given a list of N fractions, represented of two 
 #lists numerator and donominator the task is to determine the count of pairs of fractions that equals 1
 from math import gcd
@@ -79,13 +79,48 @@ result = countPairsEqualOne(numerators, denominators)
 
 # Print the result
 print(f"The count of pairs of fractions equal to 1 is: {result}")
+ 
+#Day 6
+# Chef's commute time in minutes
+chef_commute_time = 30
+
+# Input for how many minutes Chef left before he was supposed to reach
+minutes_before_schedule = int(input("Enter the minutes Chef left before schedule: "))
+
+if minutes_before_schedule == chef_commute_time:
+    print("Chef will reach on time.")
+elif minutes_before_schedule > chef_commute_time:
+    print("Chef will reach early.")
+else:
+    late_minutes = chef_commute_time - minutes_before_schedule
+    print("Chef will reach", late_minutes, "minutes late.")
 
 
-# In[ ]:
-
-
+# Day 7
 #given an array arr[] containing positive elements A and B 
-# are two numbers defininf a range. the taskv is to 
+# are two numbers defininf a range. the taske is to 
 #to check if the array contains all elements in the given 
 #range 
+ 
+def find_leaders(input_array):
+    length = len(input_array)
+    leader_elements = []
+
+    max_right = input_array[length - 1]
+    leader_elements.append(max_right)
+
+    for i in range(length - 2, -1, -1):
+        if input_array[i] >= max_right:
+            max_right = input_array[i]
+            leader_elements.append(max_right)
+
+    return leader_elements[::-1]
+
+# Taking input for the array of positive integers
+number_list = list(map(int, input("Enter the array of positive integers (space-separated): ").split()))
+
+leaders = find_leaders(number_list)
+
+print("Leader elements in the array are:", leaders)
+
 
