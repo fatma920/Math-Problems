@@ -1,0 +1,45 @@
+# Day 11
+
+"""
+Given a string S, find the longest palindromic substring in S.
+S[i..j] where 0 <= i <= j <= len(S).
+A palindrome string is a string that reads the same backward.
+More formally, S is a palindrome if reverse(s) = s.
+In case of conflict, return the substring which occurs first (with the least starting index).
+"""
+
+def longest_palindromic_substring(input_string):
+    length = len(input_string)
+    longest_start = 0
+    max_length = 1
+
+    # Create a table to store palindromic substring information
+    dp = [[False] * length for _ in range(length)]
+
+    # All substrings of length 1 are palindromic
+    for i in range(length):
+        dp[i][i] = True
+
+    # Check for substrings of length 2
+    for i in range(length - 1):
+        if input_string[i] == input_string[i + 1]:
+            dp[i][i + 1] = True
+            longest_start = i
+            max_length = 2
+
+    # Check for substrings of length greater than 2
+    for substring_length in range(3, length + 1):
+        for i in range(length - substring_length + 1):
+            j = i + substring_length - 1
+            if dp[i + 1][j - 1] and input_string[i] == input_string[j]:
+                dp[i][j] = True
+                if substring_length > max_length:
+                    longest_start = i
+                    max_length = substring_length
+
+    return input_string[longest_start:longest_start + max_length]
+
+# Example input
+input_string = "aaabbaa"
+result = longest_palindromic_substring(input_string)
+print("Longest palindromic substring:", result)
