@@ -1,8 +1,18 @@
-#!/usr/bin/env python
-# coding: utf-8
+#Day1 find the largest day 
+def main():
+    try:
+        numbers = []
+        for i in range (3):
+            num = int(input(f"enter the number {i+1}"))
+            numbers.append(num)
 
-# In[2]:
+        greatestNum = max(numbers)
+        print("the largest number is: ", greatestNum)
+    except ValueError:
+        print("invalid input, please enter valid numbers")
 
+if __name__=__main__
+main()
 #Day 2
 #write a program where user should enter an array of numbers 
 # and a number, sum of two of numbers should be equal to number A
